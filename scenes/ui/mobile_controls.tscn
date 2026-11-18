@@ -1,0 +1,153 @@
+[gd_scene load_steps=5 format=3 uid="uid://bmobile01"]
+
+[ext_resource type="Script" path="res://scripts/ui/on_screen_joystick.gd" id="1_joystick"]
+[ext_resource type="Script" path="res://scripts/ui/touch_button.gd" id="2_touchbtn"]
+
+[sub_resource type="StyleBoxFlat" id="SB_neutral"]
+bg_color = Color(0.18, 0.20, 0.28, 0.90)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.60, 0.65, 0.80, 0.80)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="SB_gold"]
+bg_color = Color(0.50, 0.32, 0.05, 0.95)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1.00, 0.78, 0.25, 0.95)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="SB_purple"]
+bg_color = Color(0.32, 0.08, 0.42, 0.95)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.85, 0.25, 0.95, 0.95)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[node name="MobileControls" type="CanvasLayer"]
+
+[node name="TouchLayer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Joystick" type="Control" parent="TouchLayer"]
+layout_mode = 3
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 0.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = -240.0
+offset_right = 240.0
+offset_bottom = -40.0
+grow_vertical = 0
+script = ExtResource("1_joystick")
+
+[node name="JumpButton" type="Button" parent="TouchLayer"]
+layout_mode = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -360.0
+offset_top = -120.0
+offset_right = -280.0
+offset_bottom = -40.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("SB_neutral")
+text = "JUMP"
+script = ExtResource("2_touchbtn")
+
+[node name="Attack1Button" type="Button" parent="TouchLayer"]
+layout_mode = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -270.0
+offset_top = -120.0
+offset_right = -190.0
+offset_bottom = -40.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("SB_neutral")
+text = "ATK1"
+script = ExtResource("2_touchbtn")
+
+[node name="Attack2Button" type="Button" parent="TouchLayer"]
+layout_mode = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -180.0
+offset_top = -120.0
+offset_right = -100.0
+offset_bottom = -40.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("SB_neutral")
+text = "ATK2"
+script = ExtResource("2_touchbtn")
+
+[node name="BlockButton" type="Button" parent="TouchLayer"]
+layout_mode = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -180.0
+offset_top = -210.0
+offset_right = -100.0
+offset_bottom = -130.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("SB_neutral")
+text = "BLOCK"
+script = ExtResource("2_touchbtn")
+
+[node name="SP1Button" type="Button" parent="TouchLayer"]
+layout_mode = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -360.0
+offset_top = -210.0
+offset_right = -280.0
+offset_bottom = -130.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("SB_gold")
+text = "SP1"
+script = ExtResource("2_touchbtn")
+
+[node name="SP2Button" type="Button" parent="TouchLayer"]
+layout_mode = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -270.0
+offset_top = -210.0
+offset_right = -190.0
+offset_bottom = -130.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("SB_purple")
+text = "SP2"
+script = ExtResource("2_touchbtn")

@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://bfighter01"]
+
+[ext_resource type="Script" path="res://scripts/characters/fighter.gd" id="1_fighter"]
+[ext_resource type="Script" path="res://scripts/combat/hurtbox.gd" id="2_hurtbox"]
+
+[sub_resource type="CapsuleShape2D" id="body_shape"]
+radius = 18.0
+height = 90.0
+
+[sub_resource type="CapsuleShape2D" id="hurt_shape"]
+radius = 26.0
+height = 100.0
+
+[node name="Fighter" type="CharacterBody2D"]
+script = ExtResource("1_fighter")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -45)
+shape = SubResource("body_shape")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+monitoring = false
+monitorable = true
+script = ExtResource("2_hurtbox")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, -50)
+shape = SubResource("hurt_shape")
+
+[node name="VisualRoot" type="Node2D" parent="."]
+
+[node name="Shadow" type="Sprite2D" parent="VisualRoot"]
+position = Vector2(0, -2)
+scale = Vector2(1.6, 0.5)
+z_index = -1
+
+[node name="Body" type="AnimatedSprite2D" parent="VisualRoot"]
+offset = Vector2(0, -120)
+
+[node name="Face" type="AnimatedSprite2D" parent="VisualRoot"]
+offset = Vector2(0, -120)
+z_index = 1
+
+[node name="HitboxPivot" type="Marker2D" parent="."]
+position = Vector2(42, -55)

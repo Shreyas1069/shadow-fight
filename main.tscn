@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://c23wqua1xdqtb"]
+
+[ext_resource type="PackedScene" path="res://scenes/arenas/arena.tscn" id="1_arena"]
+[ext_resource type="PackedScene" path="res://scenes/characters/fighter.tscn" id="2_fighter"]
+[ext_resource type="PackedScene" path="res://scenes/ui/mobile_controls.tscn" id="3_mobile"]
+[ext_resource type="PackedScene" path="res://scenes/ui/hud.tscn" id="4_hud"]
+[ext_resource type="Script" path="res://scripts/controllers/keyboard_controller.gd" id="5_keyboard"]
+[ext_resource type="Script" path="res://scripts/controllers/touch_controller.gd" id="6_touch"]
+[ext_resource type="Script" path="res://scripts/main/main.gd" id="7_main"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("7_main")
+
+[node name="Arena" parent="." instance=ExtResource("1_arena")]
+
+[node name="KeyboardControllerP1" type="Node" parent="."]
+script = ExtResource("5_keyboard")
+fighter_path = NodePath("../FighterP1")
+scheme = 1
+
+[node name="KeyboardControllerP2" type="Node" parent="."]
+script = ExtResource("5_keyboard")
+fighter_path = NodePath("../FighterP2")
+scheme = 2
+
+[node name="TouchController" type="Node" parent="."]
+script = ExtResource("6_touch")
+fighter_path = NodePath("../FighterP1")
+joystick_path = NodePath("../MobileControls/TouchLayer/Joystick")
+jump_button_path = NodePath("../MobileControls/TouchLayer/JumpButton")
+block_button_path = NodePath("../MobileControls/TouchLayer/BlockButton")
+attack_1_button_path = NodePath("../MobileControls/TouchLayer/Attack1Button")
+attack_2_button_path = NodePath("../MobileControls/TouchLayer/Attack2Button")
+sp1_button_path = NodePath("../MobileControls/TouchLayer/SP1Button")
+sp2_button_path = NodePath("../MobileControls/TouchLayer/SP2Button")
+
+[node name="FighterP1" parent="." instance=ExtResource("2_fighter")]
+position = Vector2(380, 560)
+character_id = "khushal"
+opponent_path = NodePath("../FighterP2")
+
+[node name="FighterP2" parent="." instance=ExtResource("2_fighter")]
+position = Vector2(900, 560)
+character_id = "rival"
+is_dummy = true
+opponent_path = NodePath("../FighterP1")
+
+[node name="HUD" parent="." instance=ExtResource("4_hud")]
+p1_path = NodePath("../FighterP1")
+p2_path = NodePath("../FighterP2")
+
+[node name="MobileControls" parent="." instance=ExtResource("3_mobile")]
